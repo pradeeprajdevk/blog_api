@@ -3,11 +3,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import dotenv from 'dotenv';
+dotenv.config();
 
 import "reflect-metadata";
 import { AppDataSource } from './config/database';
 
-dotenv.config();
+import authRoutes from './routes/authRoutes';
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use(helmet());
 app.use(compression());
 
 const PORT = process.env.PORT ?? 5000;
+
+app.use('/api/auth', authRoutes);
 
 AppDataSource.initialize()
     .then(() => {
