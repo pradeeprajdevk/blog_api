@@ -9,6 +9,7 @@ import "reflect-metadata";
 import { AppDataSource } from './config/database';
 
 import authRoutes from './routes/authRoutes';
+import postRoutes from './routes/postRoutes';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(compression());
 const PORT = process.env.PORT ?? 5000;
 
 app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
 
 AppDataSource.initialize()
     .then(() => {

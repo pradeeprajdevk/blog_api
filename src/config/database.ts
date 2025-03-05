@@ -1,5 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from 'typeorm';
+import { User } from "../models/User";
+import { Post } from "../models/Post";
 
 export const AppDataSource = new DataSource({
     type: "mongodb",
@@ -8,5 +10,6 @@ export const AppDataSource = new DataSource({
     useUnifiedTopology: true,
     synchronize: true,
     logging: true,
-    entities: ["src/models/*.ts"],
+    entities: [User, Post],
+    logger: 'advanced-console', // This will log in a more detailed format
 });

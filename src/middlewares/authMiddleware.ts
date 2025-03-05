@@ -6,7 +6,7 @@ export interface AuthRequest extends Request {
 }
 
 // Middleware to verify authentication
-export const isAuthenticated = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const isAuthenticated = (req: AuthRequest, res: Response, next: NextFunction): any => {
     const token = req.header('Authorization')?.split(' ')[1];
     if (!token) return res.status(401).json({ message: 'Unauthorized' });
 
