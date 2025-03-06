@@ -10,6 +10,8 @@ import { AppDataSource } from './config/database';
 
 import authRoutes from './routes/authRoutes';
 import postRoutes from './routes/postRoutes';
+import userRoutes from './routes/userRoutes';
+import commentRoutes from './routes/commentRoutes';
 
 const app = express();
 
@@ -22,6 +24,8 @@ const PORT = process.env.PORT ?? 5000;
 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/post', commentRoutes);
 
 AppDataSource.initialize()
     .then(() => {

@@ -17,7 +17,6 @@ export const isPostOwner = async(req: AuthRequest, res: Response, next: NextFunc
         const postRepository = AppDataSource.getMongoRepository(Post);
         const post = await postRepository.findOne({ where: { _id: postIdObject } });
 
-        console.log(post);
         if (!post) return res.status(404).json({ message: 'Post not found' });
 
         if (post.userId !== userId) {
