@@ -28,7 +28,7 @@ export const signup = async (req: Request, res: Response): Promise<any> => {
         const token = generateToken({ id: user.id.toString(), role: user.role }); 
         console.log(token);       
 
-        res.status(201).json({ message: 'User registered successfully', token });
+        res.status(201).json({ message: 'User registered successfully', token, id: user.id });
     } catch (e) {
         res.status(500).json({
             message: 'Server error',
@@ -49,7 +49,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 
         const token = generateToken({ id: user.id.toString(), role: user.role });
 
-        res.status(200).json({ token });
+        res.status(200).json({ token, id: user.id });
     } catch (e: any) {
         res.status(500).json({
             message: 'Server error',

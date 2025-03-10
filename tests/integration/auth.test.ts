@@ -8,7 +8,7 @@ describe("Auth API Integration Tests", () => {
 
     before(async() => {
         try {
-            console.log('Initializing database connection...');
+            console.log('Initializing database connection from auth...');
             if (!AppDataSource.isInitialized) {
                 console.log("DB Intialising");
                 await AppDataSource.initialize();
@@ -30,7 +30,7 @@ describe("Auth API Integration Tests", () => {
 
             await userRepo.clear(); // Clear all users before tests
         } catch (e) {
-            console.error('Error initializing database connection:', e);
+            console.error('Error initializing database connection from auth:', e);
         } 
     });
 
