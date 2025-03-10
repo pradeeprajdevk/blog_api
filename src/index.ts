@@ -13,6 +13,8 @@ import postRoutes from './routes/postRoutes';
 import userRoutes from './routes/userRoutes';
 import commentRoutes from './routes/commentRoutes';
 
+import { config } from './config';
+
 const app = express();
 
 app.use(express.json());
@@ -20,7 +22,7 @@ app.use(cors());
 app.use(helmet());
 app.use(compression());
 
-const PORT = process.env.PORT ?? 5000;
+const PORT = config.PORT;
 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
@@ -35,3 +37,5 @@ AppDataSource.initialize()
         });
     })
     .catch((e: any) => console.log("Error connecting to DB:", e));
+
+export default app;

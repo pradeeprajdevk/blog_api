@@ -3,10 +3,13 @@ import { DataSource } from 'typeorm';
 import { User } from '../models/User';
 import { Post } from '../models/Post';
 import { Comment } from '../models/Comment';
+import { config } from "../config";
+
+console.log("MONGOURI", config.MONGO_URI);
 
 export const AppDataSource = new DataSource({
     type: "mongodb",
-    url: process.env.MONGO_URI ?? "mongodb://localhost:27017/blog",
+    url: config.MONGO_URI,
     useNewUrlParser: true,
     useUnifiedTopology: true,
     synchronize: true,
